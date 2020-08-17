@@ -3,9 +3,12 @@ pipeline
     agent any
     stages
     {
-        stages
+        stage
         {
-            sh 'echo this works'
+            steps{
+                echo 'this works'
+            }
+            
         }
     }
 }
