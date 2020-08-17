@@ -1,5 +1,6 @@
 pipeline 
 {
+    //select agent as any
     agent any
     stages
     {
