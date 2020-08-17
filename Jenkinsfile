@@ -10,7 +10,7 @@ pipeline {
         stage('connect') {
             steps {
                 sshagent(['minikube']) {
-                    sh 'ip a'
+                    sh 'ssh -l vishnu 192.168.101.12 vishnu -a'
                 }
             }
         }
