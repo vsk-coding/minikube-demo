@@ -8,7 +8,7 @@ pipeline
         {
             steps
             {
-                sh 'echo this works'
+                echo 'this works'
             }
         }
     }
