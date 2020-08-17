@@ -7,5 +7,12 @@ pipeline {
                 echo 'this works'
             }
         }
+        stage('connect') {
+            steps {
+                sshagent(['minikube']) {
+                    sh 'ip a'
+                }
+            }
+        }
     }
 }
