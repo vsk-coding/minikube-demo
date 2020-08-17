@@ -4,9 +4,12 @@ pipeline
     agent any
     stages
     {
-        stages
+        stage("test"
         {
-            sh 'echo this works'
+            steps
+            {
+                sh 'echo this works'
+            }
         }
     }
 }
