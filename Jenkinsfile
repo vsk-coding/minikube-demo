@@ -18,7 +18,7 @@ pipeline {
             steps {
                 script {
                     def val = sh '''minikube status \
-                    grep host: Running'''
+                    | grep host: Running'''
                     if(  val == 'host: Running') {
                         echo 'yes'
                     }
