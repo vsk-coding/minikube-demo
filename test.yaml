@@ -317,105 +317,61 @@ metadata:
   selfLink: ""
 ---
 apiVersion: v1
-items:
-- apiVersion: v1
-  kind: Service
-  metadata:
-    creationTimestamp: "2020-08-18T15:54:12Z"
-    labels:
-      app: hello-node
-    managedFields:
-    - apiVersion: v1
-      fieldsType: FieldsV1
-      fieldsV1:
-        f:metadata:
-          f:labels:
-            .: {}
-            f:app: {}
-        f:spec:
-          f:externalTrafficPolicy: {}
-          f:ports:
-            .: {}
-            k:{"port":8080,"protocol":"TCP"}:
-              .: {}
-              f:port: {}
-              f:protocol: {}
-              f:targetPort: {}
-          f:selector:
-            .: {}
-            f:app: {}
-          f:sessionAffinity: {}
-          f:type: {}
-      manager: kubectl
-      operation: Update
-      time: "2020-08-18T15:54:11Z"
-    name: hello-node
-    namespace: default
-    resourceVersion: "2428"
-    selfLink: /api/v1/namespaces/default/services/hello-node
-    uid: b8727d2c-886e-4173-820e-c70bd7f1ac19
-  spec:
-    clusterIP: 10.104.17.206
-    externalTrafficPolicy: Cluster
-    ports:
-    - nodePort: 31186
-      port: 8080
-      protocol: TCP
-      targetPort: 8080
-    selector:
-      app: hello-node
-    sessionAffinity: None
-    type: LoadBalancer
-  status:
-    loadBalancer: {}
-- apiVersion: v1
-  kind: Service
-  metadata:
-    creationTimestamp: "2020-08-18T13:21:36Z"
-    labels:
-      component: apiserver
-      provider: kubernetes
-    managedFields:
-    - apiVersion: v1
-      fieldsType: FieldsV1
-      fieldsV1:
-        f:metadata:
-          f:labels:
-            .: {}
-            f:component: {}
-            f:provider: {}
-        f:spec:
-          f:clusterIP: {}
-          f:ports:
-            .: {}
-            k:{"port":443,"protocol":"TCP"}:
-              .: {}
-              f:name: {}
-              f:port: {}
-              f:protocol: {}
-              f:targetPort: {}
-          f:sessionAffinity: {}
-          f:type: {}
-      manager: kube-apiserver
-      operation: Update
-      time: "2020-08-18T13:21:36Z"
-    name: kubernetes
-    namespace: default
-    resourceVersion: "158"
-    selfLink: /api/v1/namespaces/default/services/kubernetes
-    uid: 999555cb-9bb8-4cf0-ae79-712e21fd0eab
-  spec:
-    clusterIP: 10.96.0.1
-    ports:
-    - name: https
-      port: 443
-      protocol: TCP
-      targetPort: 8443
-    sessionAffinity: None
-    type: ClusterIP
-  status:
-    loadBalancer: {}
-kind: List
+kind: Service
 metadata:
-  resourceVersion: ""
-  selfLink: ""
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"creationTimestamp":"2020-08-18T15:54:12Z","labels":{"app":"hello-node"},"managedFields":[{"apiVersion":"v1","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:labels":{".":{},"f:app":{}}},"f:spec":{"f:externalTrafficPolicy":{},"f:ports":{".":{},"k:{\"port\":8080,\"protocol\":\"TCP\"}":{".":{},"f:port":{},"f:protocol":{},"f:targetPort":{}}},"f:selector":{".":{},"f:app":{}},"f:sessionAffinity":{},"f:type":{}}},"manager":"kubectl","operation":"Update","time":"2020-08-18T15:54:11Z"}],"name":"hello-node","namespace":"default","resourceVersion":"2428","selfLink":"/api/v1/namespaces/default/services/hello-node","uid":"b8727d2c-886e-4173-820e-c70bd7f1ac19"},"spec":{"clusterIP":"10.104.17.206","externalTrafficPolicy":"Cluster","ports":[{"nodePort":31186,"port":8080,"protocol":"TCP","targetPort":8080}],"selector":{"app":"hello-node"},"sessionAffinity":"None","type":"LoadBalancer"},"status":{"loadBalancer":{}}}
+  creationTimestamp: "2020-08-18T15:57:52Z"
+  labels:
+    app: hello-node
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:clusterIP: {}
+        f:externalTrafficPolicy: {}
+        f:ports:
+          .: {}
+          k:{"port":8080,"protocol":"TCP"}:
+            .: {}
+            f:nodePort: {}
+            f:port: {}
+            f:protocol: {}
+            f:targetPort: {}
+        f:selector:
+          .: {}
+          f:app: {}
+        f:sessionAffinity: {}
+        f:type: {}
+    manager: kubectl
+    operation: Update
+    time: "2020-08-18T15:57:52Z"
+  name: hello-node
+  namespace: default
+  resourceVersion: "2505"
+  selfLink: /api/v1/namespaces/default/services/hello-node
+  uid: 65903fd0-7042-4258-a5f7-2fcab8473a31
+spec:
+  clusterIP: 10.104.17.206
+  externalTrafficPolicy: Cluster
+  ports:
+  - nodePort: 31186
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: hello-node
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer: {}
+
