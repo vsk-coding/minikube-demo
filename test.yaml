@@ -1,14 +1,421 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  app: hello-node
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+  creationTimestamp: "2020-08-18T15:53:21Z"
+  generation: 1
+  labels:
+    app: hello-node
+  managedFields:
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:progressDeadlineSeconds: {}
+        f:replicas: {}
+        f:revisionHistoryLimit: {}
+        f:selector:
+          f:matchLabels:
+            .: {}
+            f:app: {}
+        f:strategy:
+          f:rollingUpdate:
+            .: {}
+            f:maxSurge: {}
+            f:maxUnavailable: {}
+          f:type: {}
+        f:template:
+          f:metadata:
+            f:labels:
+              .: {}
+              f:app: {}
+          f:spec:
+            f:containers:
+              k:{"name":"echoserver"}:
+                .: {}
+                f:image: {}
+                f:imagePullPolicy: {}
+                f:name: {}
+                f:resources: {}
+                f:terminationMessagePath: {}
+                f:terminationMessagePolicy: {}
+            f:dnsPolicy: {}
+            f:restartPolicy: {}
+            f:schedulerName: {}
+            f:securityContext: {}
+            f:terminationGracePeriodSeconds: {}
+    manager: kubectl
+    operation: Update
+    time: "2020-08-18T15:53:21Z"
+  - apiVersion: apps/v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:deployment.kubernetes.io/revision: {}
+      f:status:
+        f:availableReplicas: {}
+        f:conditions:
+          .: {}
+          k:{"type":"Available"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Progressing"}:
+            .: {}
+            f:lastTransitionTime: {}
+            f:lastUpdateTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:observedGeneration: {}
+        f:readyReplicas: {}
+        f:replicas: {}
+        f:updatedReplicas: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: "2020-08-18T15:53:26Z"
+  name: hello-node
+  namespace: default
+  resourceVersion: "2414"
+  selfLink: /apis/apps/v1/namespaces/default/deployments/hello-node
+  uid: c750ffbe-2b1f-485e-9c80-1053c2036b57
 spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
   selector:
     matchLabels:
       app: hello-node
-  containers:
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hello-node
+    spec:
+      containers:
+      - image: k8s.gcr.io/echoserver:1.4
+        imagePullPolicy: IfNotPresent
+        name: echoserver
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2020-08-18T15:53:26Z"
+    lastUpdateTime: "2020-08-18T15:53:26Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2020-08-18T15:53:21Z"
+    lastUpdateTime: "2020-08-18T15:53:26Z"
+    message: ReplicaSet "hello-node-7bf657c596" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
+---
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Pod
+  metadata:
+    creationTimestamp: "2020-08-18T15:53:21Z"
+    generateName: hello-node-7bf657c596-
+    labels:
+      app: hello-node
+      pod-template-hash: 7bf657c596
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:generateName: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:pod-template-hash: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"3b25ce33-64de-4b11-87fb-47a099819b81"}:
+              .: {}
+              f:apiVersion: {}
+              f:blockOwnerDeletion: {}
+              f:controller: {}
+              f:kind: {}
+              f:name: {}
+              f:uid: {}
+        f:spec:
+          f:containers:
+            k:{"name":"echoserver"}:
+              .: {}
+              f:image: {}
+              f:imagePullPolicy: {}
+              f:name: {}
+              f:resources: {}
+              f:terminationMessagePath: {}
+              f:terminationMessagePolicy: {}
+          f:dnsPolicy: {}
+          f:enableServiceLinks: {}
+          f:restartPolicy: {}
+          f:schedulerName: {}
+          f:securityContext: {}
+          f:terminationGracePeriodSeconds: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2020-08-18T15:53:21Z"
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:conditions:
+            k:{"type":"ContainersReady"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Initialized"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"Ready"}:
+              .: {}
+              f:lastProbeTime: {}
+              f:lastTransitionTime: {}
+              f:status: {}
+              f:type: {}
+          f:containerStatuses: {}
+          f:hostIP: {}
+          f:phase: {}
+          f:podIP: {}
+          f:podIPs:
+            .: {}
+            k:{"ip":"172.18.0.5"}:
+              .: {}
+              f:ip: {}
+          f:startTime: {}
+      manager: kubelet
+      operation: Update
+      time: "2020-08-18T15:53:26Z"
+    name: hello-node-7bf657c596-n7vfn
+    namespace: default
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: hello-node-7bf657c596
+      uid: 3b25ce33-64de-4b11-87fb-47a099819b81
+    resourceVersion: "2412"
+    selfLink: /api/v1/namespaces/default/pods/hello-node-7bf657c596-n7vfn
+    uid: 069b6a61-f3b1-4db2-8619-30f272cc38ce
+  spec:
+    containers:
     - image: k8s.gcr.io/echoserver:1.4
       imagePullPolicy: IfNotPresent
       name: echoserver
-
-
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+      - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        name: default-token-qc45s
+        readOnly: true
+    dnsPolicy: ClusterFirst
+    enableServiceLinks: true
+    nodeName: minikube
+    priority: 0
+    restartPolicy: Always
+    schedulerName: default-scheduler
+    securityContext: {}
+    serviceAccount: default
+    serviceAccountName: default
+    terminationGracePeriodSeconds: 30
+    tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+    volumes:
+    - name: default-token-qc45s
+      secret:
+        defaultMode: 420
+        secretName: default-token-qc45s
+  status:
+    conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2020-08-18T15:53:21Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2020-08-18T15:53:26Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2020-08-18T15:53:26Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2020-08-18T15:53:21Z"
+      status: "True"
+      type: PodScheduled
+    containerStatuses:
+    - containerID: docker://07a38d14c3ac3c0fa1c59cf4be02c8ad859321a42b0a103c9871d937c039bd29
+      image: k8s.gcr.io/echoserver:1.4
+      imageID: docker-pullable://k8s.gcr.io/echoserver@sha256:5d99aa1120524c801bc8c1a7077e8f5ec122ba16b6dda1a5d3826057f67b9bcb
+      lastState: {}
+      name: echoserver
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2020-08-18T15:53:26Z"
+    hostIP: 172.17.0.3
+    phase: Running
+    podIP: 172.18.0.5
+    podIPs:
+    - ip: 172.18.0.5
+    qosClass: BestEffort
+    startTime: "2020-08-18T15:53:21Z"
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
+---
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2020-08-18T15:54:12Z"
+    labels:
+      app: hello-node
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:app: {}
+        f:spec:
+          f:externalTrafficPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":8080,"protocol":"TCP"}:
+              .: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector:
+            .: {}
+            f:app: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: kubectl
+      operation: Update
+      time: "2020-08-18T15:54:11Z"
+    name: hello-node
+    namespace: default
+    resourceVersion: "2428"
+    selfLink: /api/v1/namespaces/default/services/hello-node
+    uid: b8727d2c-886e-4173-820e-c70bd7f1ac19
+  spec:
+    clusterIP: 10.104.17.206
+    externalTrafficPolicy: Cluster
+    ports:
+    - nodePort: 31186
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: hello-node
+    sessionAffinity: None
+    type: LoadBalancer
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    creationTimestamp: "2020-08-18T13:21:36Z"
+    labels:
+      component: apiserver
+      provider: kubernetes
+    managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:labels:
+            .: {}
+            f:component: {}
+            f:provider: {}
+        f:spec:
+          f:clusterIP: {}
+          f:ports:
+            .: {}
+            k:{"port":443,"protocol":"TCP"}:
+              .: {}
+              f:name: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: kube-apiserver
+      operation: Update
+      time: "2020-08-18T13:21:36Z"
+    name: kubernetes
+    namespace: default
+    resourceVersion: "158"
+    selfLink: /api/v1/namespaces/default/services/kubernetes
+    uid: 999555cb-9bb8-4cf0-ae79-712e21fd0eab
+  spec:
+    clusterIP: 10.96.0.1
+    ports:
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: 8443
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
