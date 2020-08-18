@@ -1,8 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: hello-node
+  app: hello-node
 spec:
   selector:
     matchLabels:
