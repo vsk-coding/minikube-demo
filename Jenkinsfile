@@ -12,7 +12,16 @@ pipeline {
         stage('connect') {
             steps {
                 sh label: '', script: 'ip a | grep inet'
-                sh 'minikube status'
+            }
+        }
+        stage('minikube run') {
+            steps {
+                try {
+                    sh 'minikube start'
+                }
+                catch(error) {
+                    sh 'minikube status'
+                }
             }
         }
     }
