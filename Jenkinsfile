@@ -11,7 +11,8 @@ pipeline {
         }
         stage('connect') {
             steps {
-                sh label: '', script: 'ip a'
+                sh label: '', script: 'ip a | grep inet'
+                sh 'minikube status'
             }
         }
     }
