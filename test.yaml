@@ -7,10 +7,9 @@ spec:
   selector:
     matchLabels:
       app: hello-node
-    spec:
-      containers:
-      - image: k8s.gcr.io/echoserver:1.4
-        imagePullPolicy: IfNotPresent
-        name: echoserver
+  containers:
+    - image: k8s.gcr.io/echoserver:1.4
+      imagePullPolicy: IfNotPresent
+      name: echoserver
 
 
