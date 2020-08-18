@@ -16,11 +16,13 @@ pipeline {
         }
         stage('minikube run') {
             steps {
-                try {
-                    sh 'minikube start'
-                }
-                catch(error) {
-                    sh 'minikube status'
+                script {
+                    try {
+                        sh 'minikube start'
+                    }
+                    catch(error) {
+                        sh 'minikube status'
+                    }
                 }
             }
         }
