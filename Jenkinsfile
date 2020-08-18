@@ -17,11 +17,11 @@ pipeline {
         stage('minikube run') {
             steps {
                 script {
-                    try {
-                        sh 'minikube start'
+                    if( sh 'minikube status | grep host: Running' == 'host: Running') {
+                        echo 'yes'
                     }
-                    catch(error) {
-                        sh 'minikube status'
+                    else {
+                        echo 'no'
                     }
                 }
             }
