@@ -11,12 +11,12 @@ pipeline {
         }
         stage('connect') {
             steps {
-                sh label: '', script: 'ip a | grep inet'
+                sh label: '', script: 'minikube status'
             }
         }
-        stage('minikube run') {
+        stage('deploy app') {
             steps {
-               sh 'kubectl get nodes'
+               sh 'kubectl apply -f Deployment.yml'
             }
         }
     }
