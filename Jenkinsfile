@@ -17,9 +17,14 @@ pipeline {
         stage('minikube run') {
             steps {
                 script {
-                    def val = sh '''chmod +x minikube-status.sh
-                    ./minikube-status.sh'''
-                    if(  val == 'host: Running') {
+                    def val = sh 'minikube status'
+                    def min-ok ='minikube
+                                type: Control Plane
+                                host: Running
+                                kubelet: Running
+                                apiserver: Running
+                                   kubeconfig: Configured'
+                    if(  val == min-ok) {
                         echo 'yes'
                     }
                     else {
