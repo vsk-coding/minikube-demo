@@ -16,21 +16,7 @@ pipeline {
         }
         stage('minikube run') {
             steps {
-                script {
-                    def val = sh 'minikube status'
-                    def min-ok ='minikube
-                                type: Control Plane
-                                host: Running
-                                kubelet: Running
-                                apiserver: Running
-                                   kubeconfig: Configured'
-                    if(  val == min-ok) {
-                        echo 'yes'
-                    }
-                    else {
-                        echo 'no'
-                    }
-                }
+               sh 'kubectl get nodes'
             }
         }
     }
