@@ -4,11 +4,6 @@ pipeline {
     }
 
     stages {
-        stage('test') {
-            steps {
-                echo 'this works'
-            }
-        }
         stage('minikube status') {
             steps {
                 sh 'minikube status'
