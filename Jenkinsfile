@@ -7,17 +7,7 @@ pipeline {
     stages {
         stage('minikube status') {
             steps {      
-                script {
-                    sh 'chmod +x minikube-status.sh'
-                    sh 'pwd'
-                   
-                    if (sh './minikube-status.sh' == 'host: Running') {
-                        echo 'yes'
-                    }
-                    else {
-                        echo 'no'
-                    }
-                }
+                sh 'minikube status'
             }
         }
         stage('deploy hello minikube') {
