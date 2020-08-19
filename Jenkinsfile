@@ -19,6 +19,12 @@ pipeline {
                 sh 'minikube service hello-node'
             }
         }
+        stage('Sleeping For Exactly 1 minute') {
+            steps {
+                sleep time: 1, unit: 'MINUTES'
+            }
+        }
+        
         stage('cleanup') {
             steps {
                 sh 'kubectl delete service hello-node'
