@@ -10,8 +10,8 @@ pipeline {
                 script {
                     sh 'chmod +x minikube-status.sh'
                     sh 'pwd'
-                    env.statmin = sh './minikube-status.sh'
-                    if (${env.statmin} == 'host: Running') {
+                    def statmin = sh './minikube-status.sh'
+                    if (statmin == 'host: Running') {
                     }
                     else {
                         sh 'minikube start' 
