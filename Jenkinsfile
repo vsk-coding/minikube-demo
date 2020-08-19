@@ -1,21 +1,17 @@
 pipeline {
-    agent any
+    agent {
+        kubernetes {
+            yamlFile 'test.yaml'
+   
+            defaultContainer 'shell'
+        }
+    }
 
     stages {
         stage('test') {
             steps {
                 echo 'this works'
             }
-        }
-        stage('connect') {
-            steps {
-                sh label: '', script: 'minikube status'
-            }
-        }
-        stage('deploy app') {
-            steps {
-               sh 'kubectl apply -f test.yaml'
-            }
-        }
+        }       
     }
 }
