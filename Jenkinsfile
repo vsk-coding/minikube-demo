@@ -6,7 +6,15 @@ pipeline {
     stages {
         stage('minikube status') {
             steps {
-                sh 'minikube status'
+                sh 'chmod +x minikube-status.sh'
+                export statmin = sh './minikube-status.sh'
+                script {
+                    if (statmin == 'host: Running') {
+                    }
+                    else {
+                        sh 'minikube start' 
+                    }
+                }
             }
         }
         stage('deploy hello minikube') {
