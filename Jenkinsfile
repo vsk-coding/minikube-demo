@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'minikube-slave'
-    }
+    agent any
 
     stages {
         stage('test') {
@@ -16,7 +14,7 @@ pipeline {
         }
         stage('deploy app') {
             steps {
-               sh 'kubectl apply -f Deployment.yaml'
+               sh 'kubectl apply -f test.yaml'
             }
         }
     }
