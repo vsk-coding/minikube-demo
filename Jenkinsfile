@@ -19,5 +19,10 @@ pipeline {
                 sh 'kubectl create -f test.yaml'
             }
         }
+        stage('test') {
+            steps {
+                sh 'minikube service hello-node'
+            }
+        }
     }
 }
