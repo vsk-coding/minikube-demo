@@ -1,4 +1,4 @@
-def statmin = ''
+
 pipeline {
     agent {
         label 'minikube-slave'
@@ -6,11 +6,11 @@ pipeline {
 
     stages {
         stage('minikube status') {
-            steps {
-                sh 'chmod +x minikube-status.sh'
-                statmin = sh './minikube-status.sh'
+            steps {      
                 script {
-                    if (statmin == 'host: Running') {
+                    sh 'chmod +x minikube-status.sh'
+                    env.statmin = sh './minikube-status.sh'
+                    if (${env.statmin} == 'host: Running') {
                     }
                     else {
                         sh 'minikube start' 
