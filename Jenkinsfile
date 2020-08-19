@@ -7,7 +7,7 @@ pipeline {
         stage('minikube status') {
             steps {
                 sh 'chmod +x minikube-status.sh'
-                export statmin = sh './minikube-status.sh'
+                def statmin = sh './minikube-status.sh'
                 script {
                     if (statmin == 'host: Running') {
                     }
