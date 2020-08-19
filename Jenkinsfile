@@ -11,10 +11,12 @@ pipeline {
                     sh 'chmod +x minikube-status.sh'
                     sh 'pwd'
                     def statmin = sh './minikube-status.sh'
+                    echo '${statmin}'
                     if (statmin == 'host: Running') {
+                        echo 'yes'
                     }
                     else {
-                        sh 'minikube start' 
+                        echo 'no'
                     }
                 }
             }
