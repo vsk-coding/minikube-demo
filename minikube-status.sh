@@ -1,2 +1,2 @@
 #!/bin/sh
-minikube status | grep host: Running
+minikube status | grep 'host: Running'
