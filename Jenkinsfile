@@ -1,9 +1,6 @@
 
 pipeline {
-    agent {
-        label 'minikube-slave'
-    }
-
+    agent any
     stages {
         stage('minikube status') {
             steps {      
